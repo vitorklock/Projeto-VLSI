@@ -1,0 +1,133 @@
+|projeto_top
+clk => synchro:synchro.clk
+clk => projeto:projeto.clk
+clk => debounce:debounce.clk
+clk => buzzer_alarme:buzzer_alarme.clk
+rst_n => projeto:projeto.rst
+rst_n => debounce:debounce.rst
+rst_n => buzzer_alarme:buzzer_alarme.rst
+btn_n => synchro:synchro.async_i
+led_n[0] <= projeto:projeto.led[0]
+led_n[1] <= projeto:projeto.led[1]
+led_n[2] <= projeto:projeto.led[2]
+led_n[3] <= projeto:projeto.led[3]
+saida_buzzer <= buzzer_alarme:buzzer_alarme.buzz
+
+
+|projeto_top|synchro:synchro
+clk => sync_o~reg0.CLK
+clk => sig.CLK
+async_i => sig.DATAIN
+sync_o <= sync_o~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|projeto_top|projeto:projeto
+clk => pressed.CLK
+clk => cnt[0].CLK
+clk => cnt[1].CLK
+clk => cnt[2].CLK
+clk => cnt[3].CLK
+rst => pressed.ACLR
+rst => cnt[0].ACLR
+rst => cnt[1].ACLR
+rst => cnt[2].ACLR
+rst => cnt[3].ACLR
+btn => process_0.IN1
+btn => process_0.IN1
+led[0] <= cnt[0].DB_MAX_OUTPUT_PORT_TYPE
+led[1] <= cnt[1].DB_MAX_OUTPUT_PORT_TYPE
+led[2] <= cnt[2].DB_MAX_OUTPUT_PORT_TYPE
+led[3] <= cnt[3].DB_MAX_OUTPUT_PORT_TYPE
+
+
+|projeto_top|debounce:debounce
+clk => state.CLK
+clk => timer[0].CLK
+clk => timer[1].CLK
+clk => timer[2].CLK
+clk => timer[3].CLK
+clk => timer[4].CLK
+clk => timer[5].CLK
+clk => timer[6].CLK
+clk => timer[7].CLK
+clk => timer[8].CLK
+clk => timer[9].CLK
+clk => timer[10].CLK
+clk => timer[11].CLK
+clk => timer[12].CLK
+clk => timer[13].CLK
+clk => timer[14].CLK
+clk => timer[15].CLK
+clk => timer[16].CLK
+clk => timer[17].CLK
+clk => timer[18].CLK
+clk => timer[19].CLK
+clk => timer[20].CLK
+clk => timer[21].CLK
+rst => state.ACLR
+rst => timer[0].PRESET
+rst => timer[1].ACLR
+rst => timer[2].ACLR
+rst => timer[3].ACLR
+rst => timer[4].ACLR
+rst => timer[5].ACLR
+rst => timer[6].ACLR
+rst => timer[7].ACLR
+rst => timer[8].ACLR
+rst => timer[9].ACLR
+rst => timer[10].ACLR
+rst => timer[11].ACLR
+rst => timer[12].ACLR
+rst => timer[13].ACLR
+rst => timer[14].ACLR
+rst => timer[15].ACLR
+rst => timer[16].ACLR
+rst => timer[17].ACLR
+rst => timer[18].ACLR
+rst => timer[19].ACLR
+rst => timer[20].ACLR
+rst => timer[21].ACLR
+bounce_i => process_0.IN1
+bounce_i => state.DATAIN
+debounce_o <= state.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|projeto_top|buzzer_alarme:buzzer_alarme
+clk => square.CLK
+clk => cnt[0].CLK
+clk => cnt[1].CLK
+clk => cnt[2].CLK
+clk => cnt[3].CLK
+clk => cnt[4].CLK
+clk => cnt[5].CLK
+clk => cnt[6].CLK
+clk => cnt[7].CLK
+clk => cnt[8].CLK
+clk => cnt[9].CLK
+clk => cnt[10].CLK
+clk => cnt[11].CLK
+clk => cnt[12].CLK
+clk => cnt[13].CLK
+clk => cnt[14].CLK
+clk => cnt[15].CLK
+rst => square.ACLR
+rst => cnt[0].ACLR
+rst => cnt[1].ACLR
+rst => cnt[2].ACLR
+rst => cnt[3].ACLR
+rst => cnt[4].ACLR
+rst => cnt[5].ACLR
+rst => cnt[6].ACLR
+rst => cnt[7].ACLR
+rst => cnt[8].ACLR
+rst => cnt[9].ACLR
+rst => cnt[10].ACLR
+rst => cnt[11].ACLR
+rst => cnt[12].ACLR
+rst => cnt[13].ACLR
+rst => cnt[14].ACLR
+rst => cnt[15].ACLR
+en => buzz.IN1
+buzz <= buzz.DB_MAX_OUTPUT_PORT_TYPE
+
+
